@@ -20,18 +20,12 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
-    def is_done(self):
-        if CompletedTask.objects.get(task=self):
-            return True
-        else:
-            return False
-            
-    is_done.boolean = True
-    is_done.short_description = "Выполнено"
+    def complet(self, user):
+        CompletedTask.objects.create(user=user, task=self)
 
 class CompletedTask(models.Model):
     user = models.ForeignKey(User, verbose_name="Пользователь")
-    task = models.ForeignKey(Task, verbose_name="Задание")
+    task = models.OneToOneField(Task, verbose_name="Задание")
 
     class Meta:
         verbose_name = 'Выполненное задание'
