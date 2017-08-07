@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block title %}
+    Авторизация
+{% endblock %}
+
+{% block styles %}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="pure-u-1">
+    {% if user.is_authenticated %}
+        <h2>Вы уже авторизировались.</h2>
+    {% else %}
+        <h2>Авторизация</h2>
+
+        <form class="form-inline form-login" method="post">
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {%else%}
+                <input type="hidden" name="next" value="/" />
+            {% endif %}
+
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+            <div class="row">
+				<div class="col-md-4 col-sm-4 text-left">
+					<label for="{{ form.name_client.id_for_label }}">
+                        {{ field.label_tag }}
+                    </label>
+				</div>
+				<div class="col-md-8 col-sm-8 input-block">
+					{{ form.name_client }}
+                    {{ field }}
+				</div>
+                {{ field.errors }}
+
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-login">АВТОРИЗИРОВАТЬСЯ</button>
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

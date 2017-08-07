@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR + '/templates/',
             BASE_DIR + '/task/templates/',
+            BASE_DIR + '/accounts/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

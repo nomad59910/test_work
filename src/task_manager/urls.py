@@ -17,7 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from task.views import TaskListView
+
 urlpatterns = [
+    url(r'^$', TaskListView.as_view(), name="index"),
     url(r'^admin/', admin.site.urls),
     url(r'^task/', include('task.urls', namespace='task')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),

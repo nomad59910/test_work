@@ -1,0 +1,18 @@
+.btn-login{
+    border-radius: 0px;
+    background-color: #c16060;
+    color: white;
+    margin-top: 20px;
+}
+
+
+.form-login{
+    max-width: 400px;
+    width: 100%;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#id_username, #id_password{
+    width: 100%;
+}
