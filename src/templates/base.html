@@ -22,11 +22,22 @@
 	{% endblock %}
 </head>
 <body>
+
 	<div class="conteiner-fluid text-center">
 		<div class="row main-conteiner">
 			<div class="row head-block">
 				<div class="col-md-12">
 					<a class="pull-left logo" href="{% url 'index' %}">LOGO</a>
+					{% if user.is_authenticated %}
+				        <!-- <h2>Вы уже авторизировались.</h2> -->
+						<a href="{% url 'accounts:logout' %}" class="pull-right logout">ВЫЙТИ</a>
+				    {% else %}
+						<div class="inline pull-right">
+							<a href="{% url 'accounts:login' %}" class="login">ВОЙТИ</a>
+							<span> / </span>
+							<a href="" class="logout">РЕГИСТРАЦИЯ</a>
+						</div>
+					{% endif%}
 				</div>
 			</div>
 			<div class="row content">

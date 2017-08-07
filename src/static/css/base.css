@@ -2,7 +2,7 @@ body{
 	font-family: 'Oswald', sans-serif;
 }
 
-:focus {
+:focus, a:focus{
     outline: none;
 }
 
@@ -44,4 +44,10 @@ a:hover{
 
 .errorlist{
     color: red;
+}
+
+.logout, .login, .logout{
+    color: white;
+    padding-top: 14px;
+    display: inline-block;
 }
