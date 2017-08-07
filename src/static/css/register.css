@@ -1,0 +1,18 @@
+.block-register{
+    width: 100%;
+    max-width: 500px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.input-block > input{
+    width: 100%;
+}
+
+.btn-register{
+    border-radius: 0px;
+    background-color: #c16060;
+    color: white;
+    margin-top: 20px;
+    border: none;
+}

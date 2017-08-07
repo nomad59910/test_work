@@ -12,7 +12,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="pure-u-1">
     {% if user.is_authenticated %}
         <h2>Вы уже авторизировались.</h2>
     {% else %}
@@ -46,7 +45,6 @@
             <button type="submit" class="btn btn-login">АВТОРИЗИРОВАТЬСЯ</button>
         </form>
     {% endif %}
-    </div>
 {% endblock %}
 
 {% block javascript %}
