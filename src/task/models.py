@@ -6,7 +6,7 @@ class Task(models.Model):
     name = models.CharField(max_length=150, verbose_name="Название")
     description = models.TextField(max_length=500, verbose_name="Описание",
                                    blank=True)
-    user_added = models.ForeignKey(User, null=True)
+    user_added = models.ForeignKey(User, verbose_name="Пользователь")
     date_created = models.DateTimeField(auto_now_add=True,
                                         verbose_name="Дата создания")
 
@@ -18,7 +18,7 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
-class CompletedTasks(models.Model):
+class CompletedTask(models.Model):
     user = models.ForeignKey(User, verbose_name="Пользователь")
     task = models.ForeignKey(Task, verbose_name="Задание")
 
