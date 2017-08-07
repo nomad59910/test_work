@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
+
 class Task(models.Model):
     name = models.CharField(max_length=150, verbose_name="Название")
     description = models.TextField(max_length=500, verbose_name="Описание",
@@ -17,6 +19,7 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class CompletedTask(models.Model):
     user = models.ForeignKey(User, verbose_name="Пользователь")
