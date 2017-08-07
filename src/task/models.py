@@ -20,6 +20,14 @@ class Task(models.Model):
     def __str__(self):
         return self.name
 
+    def is_done(self):
+        if CompletedTask.objects.get(task=self):
+            return True
+        else:
+            return False
+            
+    is_done.boolean = True
+    is_done.short_description = "Выполнено"
 
 class CompletedTask(models.Model):
     user = models.ForeignKey(User, verbose_name="Пользователь")
@@ -30,4 +38,4 @@ class CompletedTask(models.Model):
         verbose_name_plural = 'Выполненные задания'
 
     def __str__(self):
-        return self.task
+        return self.task.__str__()
