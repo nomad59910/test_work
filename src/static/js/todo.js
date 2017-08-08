@@ -74,6 +74,13 @@ var vm = new Vue({
         tasks : [],
         isLoadind : true,
         next: undefined,
+        newTask:{
+            "name": "",
+            "description": "",
+            "user_added": "admin",
+            "date_created": '-',
+            "is_done": false
+        }
     },
     mounted : function(){
         var tasks = getTask(urlLoadTask);
@@ -85,6 +92,13 @@ var vm = new Vue({
         $(window).scroll(this.handleScroll);
     },
     methods: {
+        addTask: function(){
+            console.log(this.newTask);
+            var newTask = Object.assign({}, this.newTask);
+            this.tasks.unshift(newTask);
+            this.newTask.name = "";
+            this.newTask.description = "";
+        },
         removeTask : function(index){
             this.tasks.splice(index, 1);
         },

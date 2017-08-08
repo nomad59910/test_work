@@ -66,9 +66,35 @@ h3{
     padding: 10px 15px;
     border-top: none;
     text-align: center;
+    padding-top: 0px;
 }
 
 .modal-header{
     padding: 10px 15px;
     border-bottom: none;
+}
+
+.modal-body{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#id_description, #id_name{
+    resize: none;
+    border-radius: 0px;
+    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(179, 179, 179, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(179, 179, 179, 0.6);
+}
+
+#id_description:focus, #id_name:focus{
+    border-color: black;
+}
+
+.modal-header .close {
+    margin-top: -2px;
+    font-size: 40px;
+    font-family: initial;
+    position: absolute;
+    right: 12px;
+    top: 5px;
 }
