@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+def get_or_none(classmodel, **kwargs):
+    try:
+        return classmodel.objects.get(**kwargs)
+    except classmodel.DoesNotExist:
+        return None
+
 
 class Task(models.Model):
     name = models.CharField(max_length=150, verbose_name="Название")
@@ -22,6 +28,15 @@ class Task(models.Model):
 
     def complet(self, user):
         CompletedTask.objects.create(user=user, task=self)
+
+    def is_done(self):
+        if get_or_none(CompletedTask, task=self):
+            return True
+        else:
+            return False
+
+    is_done.boolean = True
+    is_done.short_description = "Выполнено"
 
 class CompletedTask(models.Model):
     user = models.ForeignKey(User, verbose_name="Пользователь")

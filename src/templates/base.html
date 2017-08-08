@@ -16,6 +16,8 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
+	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 	{% block styles %}
@@ -27,7 +29,7 @@
 		<div class="row main-conteiner">
 			<div class="row head-block">
 				<div class="col-md-12">
-					<a class="pull-left logo" href="{% url 'index' %}">LOGO</a>
+					<a class="pull-left logo" href="{% url 'index' %}">ЛОГО</a>
 					{% if user.is_authenticated %}
 				        <!-- <h2>Вы уже авторизировались.</h2> -->
 						<a href="{% url 'accounts:logout' %}" class="pull-right logout">ВЫЙТИ</a>
