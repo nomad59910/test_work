@@ -1,50 +1,3 @@
-// $(document).ready(function() {
-//     var urlLoadTask = "/task/api/tasks-list?limit=5";
-//     var isLoadind = false;
-//
-// 	var win = $(window);
-//     LoadTask();
-//
-// 	win.scroll(function() {
-// 		if ($(document).height() - win.height() == win.scrollTop() && !isLoadind) {
-//             isLoadind = true;
-//             LoadTask(urlLoadTask);
-// 		}
-// 	});
-//
-//     function getTask(url){
-//         var resultData = undefined;
-//         $.get({
-//             type: "GET",
-//             url: url,
-//             success: function(data){
-//                 resultData = data;
-//             },
-//             dataType: "JSON",
-//             async: false,
-//         });
-//
-//         return resultData;
-//     }
-//
-//     function LoadTask(){
-//         $('#loading').show();
-//         if (!urlLoadTask) {
-//             $('#loading').hide();
-//             return;
-//         }
-//         var tasks = getTask(urlLoadTask);
-//         urlLoadTask = tasks["next"]
-//
-//         var tmpl = document.getElementById('task-template').innerHTML;
-//         var html = _.template(tmpl)({ items: tasks["results"] })
-//
-//         $('#tasks-content').append(html);
-//         $('#loading').hide();
-//         isLoadind = false;
-//     }
-// });
-
 var urlLoadTask = "/task/api/tasks-list?limit=13";
 
 function getTask(url){
@@ -67,20 +20,43 @@ var Todos = Vue.extend({
     name: 'todos'
 });
 
+Vue.component('modal', {
+    template: '#modal-template',
+    props: ['show'],
+    data: function () {
+        return {
+            name: "",
+            description: "",
+        }
+    },
+    methods: {
+        savePost: function () {
+            this.$emit('save-data', this.name, this.description);
+            this.close();
+        },
+        close: function () {
+            this.$emit('hide-modal');
+            this.name = "";
+            this.description = "";
+        }
+    },
+    mounted: function () {
+        document.addEventListener("keydown", (e) => {
+            if (this.show && e.keyCode == 27) {
+                this.close();
+            }
+        });
+    }
+});
+
 var vm = new Vue({
     delimiters: ["[", "]"],
     el : '#todos',
     data : {
+        showModal: false,
         tasks : [],
         isLoadind : true,
         next: undefined,
-        newTask:{
-            "name": "",
-            "description": "",
-            "user_added": "admin",
-            "date_created": '-',
-            "is_done": false
-        }
     },
     mounted : function(){
         var tasks = getTask(urlLoadTask);
@@ -92,12 +68,19 @@ var vm = new Vue({
         $(window).scroll(this.handleScroll);
     },
     methods: {
-        addTask: function(){
+        hideModal: function(){
+            this.showModal = false;
+        },
+        addTask: function(name, description){
             console.log(this.newTask);
             var newTask = Object.assign({}, this.newTask);
-            this.tasks.unshift(newTask);
-            this.newTask.name = "";
-            this.newTask.description = "";
+            this.tasks.unshift({
+                "name": name,
+                "description": description,
+                "user_added": "admin",
+                "date_created": '-',
+                "is_done": false
+            });
         },
         removeTask : function(index){
             this.tasks.splice(index, 1);
