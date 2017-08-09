@@ -1,6 +1,7 @@
 #todos{
     margin-top: 20px;
     display: inline-block;
+    width: 100%;
 }
 
 .todo-block{
@@ -54,13 +55,23 @@ h3{
     border: none;
     padding-top: 4px;
     padding-bottom: 4px;
-    background-color: #42b983;
+    background-color: #6bc2dc;
     color: white;
+}
+
+.add-task-btn:hover{
+    background-color: #7ebed1;
 }
 
 .modal-content{
     border: none;
     border-radius: 0px;
+}
+
+.hide-modal{
+    display: none;
+    transition: opacity 1s ease-out;
+    opacity: 0;
 }
 
 .modal-footer {
@@ -83,8 +94,8 @@ h3{
 #id_description, #id_name{
     resize: none;
     border-radius: 0px;
-    webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(179, 179, 179, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(179, 179, 179, 0.6);
+    webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 #id_description:focus, #id_name:focus{
@@ -112,8 +123,8 @@ h3{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .5);
-    transition: opacity .3s ease;
+    background-color: rgba(0, 0, 0, .6);
+    opacity: 1;
 }
 
 .modal-container {
@@ -123,9 +134,12 @@ h3{
     padding: 20px 30px;
     background-color: #fff;
     border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    box-shadow: none;
     transition: all .3s ease;
-    font-family: Helvetica, Arial, sans-serif;
+}
+
+label{
+    font-weight: 400;
 }
 
 .modal-header h3 {
@@ -166,4 +180,12 @@ h3{
 .modal-leave .modal-container {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s
+}
+
+.fade-enter, .fade-leave-to{
+  opacity: 0
 }
