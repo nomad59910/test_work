@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^$', login_required(TaskListView.as_view()), name="index"),
     url(r'^admin/', admin.site.urls),
     url(r'^task/', include('task.urls', namespace='task')),
+    url(r'^api/task/', include('task.api.urls', namespace='task_api')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
