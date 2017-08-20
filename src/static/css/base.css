@@ -1,5 +1,5 @@
 body{
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 :focus, a:focus{
@@ -11,7 +11,7 @@ a:hover{
 }
 
 .main-conteiner{
-	max-width: 900px;
+	max-width: 700px;
 	width: 100%;
 	display: inline-block;
 }
@@ -32,7 +32,6 @@ a:hover{
 	color: white;
 }
 
-
 .inline{
 	display: inline-block;
 }
@@ -48,6 +47,15 @@ a:hover{
 
 .logout, .login, .logout{
     color: white;
-    padding-top: 14px;
+	padding-top: 14px;
     display: inline-block;
+}
+
+.logout > a{
+	color: white;
+	display: inline-block;
+}
+
+.middle{
+	vertical-align: middle;
 }

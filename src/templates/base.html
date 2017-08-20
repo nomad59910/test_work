@@ -14,7 +14,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
 
@@ -31,8 +31,10 @@
 				<div class="col-md-12">
 					<a class="pull-left logo" href="{% url 'index' %}">ЛОГО</a>
 					{% if user.is_authenticated %}
-				        <!-- <h2>Вы уже авторизировались.</h2> -->
-						<a href="{% url 'accounts:logout' %}" class="pull-right logout">ВЫЙТИ</a>
+						<div class="inline pull-right logout">
+							<span id="username">{{ user }}</span>,
+							<a href="{% url 'accounts:logout' %}" class="">выйти</a>
+						</div>
 				    {% else %}
 						<div class="inline pull-right">
 							<a href="{% url 'accounts:login' %}" class="login">ВОЙТИ</a>
@@ -51,8 +53,10 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="{% static 'js/csrf_django.js' %}" type="text/javascript">
+
+	</script>
 
     {% block javascript %}
 	{% endblock %}
