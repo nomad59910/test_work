@@ -1,4 +1,0 @@
-{
-  "task/tests.py::TestAccounts::()::test_get_list": true,
-  "task/tests.py::TestAccounts::()::test_registration": true
-}
